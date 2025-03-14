@@ -9,7 +9,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- <link rel="manifest" href="site.webmanifest"> -->
-    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="img/favicon_io/apple-touch-icon.png"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon_io/favicon-32x32.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon_io/favicon-16x16.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon_io/favicon.ico"/>
+  <link rel="manifest" href="img/favicon_io/site.webmanifest" />
     <!-- Place favicon.ico in the root directory -->
 
     <!-- CSS here -->
@@ -217,7 +221,7 @@
                             edition of Acharya Narendra Dev College's premier tech fest will feature an exciting lineup
                             of events, bringing together students, professors, and tech enthusiasts for an unforgettable
                             experience.</p>
-                        <a href="#" class="boxed-btn3  wow fadeInLeft" data-wow-duration="1s"
+                        <a href="https://linktr.ee/Turing_Society?utm_source=linktree_profile_share&ltsid=f14a1b6a-6d64-4dab-b6c0-368ab4116e5e" class="boxed-btn3  wow fadeInLeft" data-wow-duration="1s"
                             data-wow-delay=".7s">Register Now</a>
                     </div>
                 </div>
@@ -595,33 +599,6 @@
     </div>
     <!-- brand_area_end  -->
 
-    <!--     <div id="gallery" class="py-5 bg-dark text-center text-light">
-        <div class="container" data-aos="fade-up">
-            <div class="section-header mb-4">
-                <h2 class="fw-bold">GLIMPSES</h2>
-                <p class="text-muted">Overload++ 2K23 in Stunning Visual Highlights</p>
-            </div>
-        </div>
-
-        <div class="gallery-slider position-relative overflow-hidden">
-            <div class="slider-wrapper d-flex justify-content-center">
-                <div class="slider d-flex">
-                    <div class="slide"><img src="img/gallery/1.JPG" class="rounded" alt="Image 1"></div>
-                    <div class="slide"><img src="img/gallery/2.JPG" class="rounded" alt="Image 2"></div>
-                    <div class="slide"><img src="img/gallery/3.JPG" class="rounded" alt="Image 3"></div>
-                    <div class="slide"><img src="img/gallery/4.JPG" class="rounded" alt="Image 4"></div>
-                    <div class="slide"><img src="img/gallery/5.JPG" class="rounded" alt="Image 5"></div>
-                    <div class="slide"><img src="img/gallery/6.JPG" class="rounded" alt="Image 6"></div>
-                    <div class="slide"><img src="img/gallery/7.JPG" class="rounded" alt="Image 7"></div>
-                    <div class="slide"><img src="img/gallery/8.jpg" class="rounded" alt="Image 8"></div>
-                    <div class="slide"><img src="img/gallery/9.jpg" class="rounded" alt="Image 9"></div>
-                    <div class="slide"><img src="img/gallery/10.jpg" class="rounded" alt="Image 10"></div>
-                    <div class="slide"><img src="img/gallery/11.jpg" class="rounded" alt="Image 11"></div>
-                </div>
-            </div>
-            <div class="pagination-dots d-flex justify-content-center mt-3"></div>
-        </div>
-    </div> -->
 
 
     <section id="gallery" class="wow fadeInUp">
@@ -746,93 +723,7 @@
     <script src="js/mail-script.js"></script>
     <script src="js/venobox.min.js"></script>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const visibleSlides = 5;
-            const intervalTime = 3000;
-            const slideWidth = 300; // Slide width including margin
-            const slider = document.querySelector('.slider');
-            const slides = Array.from(document.querySelectorAll('.slide'));
-            const dotsContainer = document.querySelector('.pagination-dots');
-            let autoRotateInterval;
-            let currentIndex = 0;
-
-            // Add clones for smooth infinite looping
-            slides.forEach(slide => slider.append(slide.cloneNode(true))); // Append clones at end
-
-            // Set initial transform position to show the first "page"
-            slider.style.transform = `translateX(0px)`;
-
-            // Create dots for main slides
-            function createDots() {
-                slides.forEach((_, index) => {
-                    const dot = document.createElement('span');
-                    dot.classList.add('dot');
-                    dot.dataset.index = index;
-                    dot.addEventListener('click', () => goToSlide(index));
-                    dotsContainer.appendChild(dot);
-                });
-            }
-
-            // Update dot active state
-            function updateDots() {
-                const dots = document.querySelectorAll('.dot');
-                dots.forEach((dot, index) => {
-                    dot.classList.toggle('active', index === currentIndex % slides.length);
-                });
-            }
-
-            // Go to specific slide
-            function goToSlide(index) {
-                clearInterval(autoRotateInterval);
-                currentIndex = index;
-                slider.style.transition = 'transform 0.5s ease-in-out';
-                slider.style.transform = `translateX(-${slideWidth * currentIndex}px)`;
-                updateDots();
-                startAutoRotate();
-            }
-
-            // Continuous move function for infinite scrolling effect
-            function continuousMove() {
-                slider.style.transition = 'transform 0.5s ease-in-out';
-                const firstSlide = slider.firstElementChild;
-                slider.style.transform = `translateX(-${slideWidth}px)`;
-
-                slider.addEventListener('transitionend', () => {
-                    slider.style.transition = 'none';
-                    slider.appendChild(firstSlide);
-                    slider.style.transform = 'translateX(0px)';
-                    currentIndex = (currentIndex + 1) % slides.length;
-                    updateDots();
-                    setTimeout(() => slider.style.transition = 'transform 0.5s ease-in-out', 50);
-                }, { once: true });
-            }
-
-            // Auto-rotate function
-            function autoRotateSlides() {
-                continuousMove();
-            }
-
-            // Start auto-rotation
-            function startAutoRotate() {
-                autoRotateInterval = setInterval(autoRotateSlides, intervalTime);
-            }
-
-            // Pause auto-rotation on hover
-            function pauseAutoRotate() {
-                clearInterval(autoRotateInterval);
-            }
-
-            // Initialize dots and set up autoplay
-            createDots();
-            updateDots();
-            startAutoRotate();
-
-            // Event listeners for hover actions
-            slider.addEventListener('mouseover', pauseAutoRotate);
-            slider.addEventListener('mouseleave', startAutoRotate);
-        });
-    </script>
+   
 
     <script src="js/main.js"></script>
 </body>
