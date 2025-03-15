@@ -1,7 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&display=swap");
+
 .navigation .navbar,
 .navigation .nav,
 .navigation .menu {
     all: unset;
+}
+
+*{
+    font-family: "Oxanium";
 }
 
 .item img {
